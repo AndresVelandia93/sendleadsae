@@ -74,6 +74,7 @@ define(['postmonger'], (Postmonger) => {
             payload = data;
         }
         showStep(null);
+        disableButtonNext(validateSelectors());
         console.log('initialize', data);
     }
 
@@ -114,11 +115,6 @@ define(['postmonger'], (Postmonger) => {
         
 
     }
-
-
-
-
-
 
 
     function onRequestSchema(data) {
@@ -171,6 +167,14 @@ define(['postmonger'], (Postmonger) => {
                 }
             }
         }
+
+        payload['metaData'].inArguments.push({ "email": $(select01).val() });
+        payload['metaData'].inArguments.push({ "firstname": $(select02).val() });
+        payload['metaData'].inArguments.push({ "middlename": $(select03).val() });
+        payload['metaData'].inArguments.push({ "lastname": $(select04).val() });     
+        payload['metaData'].inArguments.push({ "UTMc": $(select05).val() });
+        payload['metaData'].inArguments.push({ "UTMS": $(select06).val() });
+        
         payload['metaData'].isConfigured = true;       
         payload['arguments'].execute.inArguments = inArguments;
     }
@@ -235,8 +239,17 @@ define(['postmonger'], (Postmonger) => {
                 }
             }
         }
+        $(select01).change(validateOnChange());
+        $(select02).change(validateOnChange());
+        $(select03).change(validateOnChange());
+        $(select04).change(validateOnChange());
+        $(select05).change(validateOnChange());
+        $(select06).change(validateOnChange());
     }
 
+    function validateOnChange(){
+        disableButtonNext(validateSelectors());
+    }
 
     function extractFieldName(field) {
         var index = field.key.lastIndexOf('.');
