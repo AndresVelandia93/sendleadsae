@@ -267,7 +267,6 @@ define(['postmonger'], (Postmonger) => {
     function showStep(step) {
         $('.step').hide();
 
-
         if (step == null) {
             $(setup).show();
             connection.trigger('updateButton', {
