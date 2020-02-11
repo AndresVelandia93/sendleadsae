@@ -213,8 +213,6 @@ define(['postmonger'], (Postmonger) => {
        return true;
     }
 
-
-
     function fillPlaceholderList(schema) {
         $(select01).html('<option value="">Seleccione el campo</option>');
         $(select02).html('<option value="">Seleccione el campo</option>');
