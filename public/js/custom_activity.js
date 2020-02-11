@@ -179,7 +179,6 @@ define(['postmonger'], (Postmonger) => {
         payload['arguments'].execute.inArguments = inArguments;
     }
 
-
     function validateSelectors(){
         if ($(select01).val() == ""){
             $(select01).focus();
